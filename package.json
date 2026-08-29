@@ -1,0 +1,16 @@
+{
+  "name": "pstack-portable",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "accept-generation": "node scripts/generate.mjs --accept-contract",
+    "verify": "node scripts/verify.mjs",
+    "simulate-install": "node scripts/simulate-install.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

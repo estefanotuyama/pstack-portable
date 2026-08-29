@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+import { simulateProvider } from "../provider-cli.mjs";
+
+simulateProvider("codex");

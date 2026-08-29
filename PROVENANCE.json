@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repository": "https://github.com/cursor/plugins.git",
+    "commit": "799151d91b6e12ee7dbd09f708eec108d7de9b3b",
+    "subtree": "pstack",
+    "version": "0.14.4",
+    "snapshotTreeSha256": "bd6ce8e29c45710403a4ac193cb4f4f3553af96f67de63555e3a44cc4e4716f5"
+  },
+  "policy": {
+    "upstream": "immutable byte-for-byte snapshot",
+    "generated": [
+      "dist/claude",
+      "dist/codex"
+    ],
+    "omittedFromGeneratedPorts": [
+      ".cursor-plugin",
+      "automations/benny",
+      "skills/grokbot",
+      "docs/guide/images/design.jpg",
+      "docs/guide/images/overnight.jpg",
+      "docs/guide/images/recipes.jpg",
+      "docs/guide/images/router.jpg",
+      "docs/guide/images/understanding.jpg"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "pstack",
+  "version": "0.14.4-portable.codex.34c18ad2c884",
+  "description": "If you want to go fast, go deep first. Rigorous agent workflows you can parallelize with confidence.",
+  "author": {
+    "name": "Lauren Tan"
+  },
+  "license": "MIT",
+  "keywords": [
+    "pstack",
+    "poteto-mode",
+    "workflow",
+    "principles",
+    "subagents",
+    "unslop"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "pstack",
+    "shortDescription": "Rigorous native agent workflows for Codex.",
+    "longDescription": "Provider-native pstack workflows for understanding, designing, building, reviewing, verifying, and shipping code.",
+    "developerName": "Lauren Tan",
+    "category": "Productivity",
+    "capabilities": [
+      "Subagents",
+      "Planning",
+      "Verification"
+    ],
+    "defaultPrompt": [
+      "Use pstack poteto mode for this task."
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pstack: Principle Type System Discipline"
+  short_description: "Invoke this pstack workflow explicitly."
+  default_prompt: "Use $pstack:principle-type-system-discipline for this task."
+policy:
+  allow_implicit_invocation: false

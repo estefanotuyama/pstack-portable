@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sourceTreeSha256": "bd6ce8e29c45710403a4ac193cb4f4f3553af96f67de63555e3a44cc4e4716f5",
+  "providers": {
+    "claude": {
+      "version": "0.14.4-portable.claude.3290e64494b8",
+      "distTreeSha256": "ffd7cc993fa30c6d3f2de3a874349c78d62be105eaf581b7d3aac0e24f05ef03",
+      "manifestSha256": "ca98aefa70729efca1c79fa1f291753e04c41f897c5ffb5e490aeaf6ca10b1a2"
+    },
+    "codex": {
+      "version": "0.14.4-portable.codex.34c18ad2c884",
+      "distTreeSha256": "c8e8a4ef94ad3d1f4565093ca069c5ac0a306ac5c67e1ffab371e85b86d954d5",
+      "manifestSha256": "d5e1ca64281c526f4d5fe8a9b5db162d097ca8bfee7d1c58f346704c1776ad4f"
+    }
+  },
+  "claudeMarketplaceSha256": "bf83a4e6d61dd6200c9fd25b6fe60aa9a472f485d077fbc392f57b39062b6291"
+}

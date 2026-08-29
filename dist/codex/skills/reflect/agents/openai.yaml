@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pstack: Reflect"
+  short_description: "Invoke this pstack workflow explicitly."
+  default_prompt: "Use $pstack:reflect for this task."
+policy:
+  allow_implicit_invocation: false

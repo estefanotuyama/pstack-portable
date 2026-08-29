@@ -1,0 +1,14 @@
+{
+  "name": "pstack-portable",
+  "owner": {
+    "name": "pstack portable maintainers"
+  },
+  "plugins": [
+    {
+      "name": "pstack",
+      "source": "./dist/claude",
+      "description": "Provider-native pstack for Claude Code",
+      "version": "0.14.4-portable.claude.3290e64494b8"
+    }
+  ]
+}

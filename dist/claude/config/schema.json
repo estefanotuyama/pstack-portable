@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pstack.local/schema/model-routing-v1.json",
+  "title": "pstack model routing overrides",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "roles"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "roles": {
+      "type": "object",
+      "description": "Sparse overrides. Omit a role to use the shipped provider default.",
+      "additionalProperties": false,
+      "properties": {
+        "feature": { "$ref": "#/$defs/route" },
+        "refactoring": { "$ref": "#/$defs/route" },
+        "bug-fix": { "$ref": "#/$defs/route" },
+        "perf-issue": { "$ref": "#/$defs/route" },
+        "hillclimb": { "$ref": "#/$defs/route" },
+        "judgment": { "$ref": "#/$defs/route" },
+        "prose": { "$ref": "#/$defs/route" },
+        "hardest-precise": { "$ref": "#/$defs/route" },
+        "hardest-ambiguous": { "$ref": "#/$defs/route" },
+        "how-explorer": { "$ref": "#/$defs/route" },
+        "how-explainer": { "$ref": "#/$defs/route" },
+        "why-investigator": { "$ref": "#/$defs/route" },
+        "why-synthesizer": { "$ref": "#/$defs/route" },
+        "reflect-tooling": { "$ref": "#/$defs/route" },
+        "reflect-judgment": { "$ref": "#/$defs/route" },
+        "reflect-divergent": { "$ref": "#/$defs/route" },
+        "reflect-synthesizer": { "$ref": "#/$defs/route" },
+        "swarm-worker": { "$ref": "#/$defs/route" },
+        "verification-worker": { "$ref": "#/$defs/route" },
+        "how-critic-1": { "$ref": "#/$defs/route" },
+        "how-critic-2": { "$ref": "#/$defs/route" },
+        "how-critic-3": { "$ref": "#/$defs/route" },
+        "how-critic-4": { "$ref": "#/$defs/route" },
+        "arena-runner-1": { "$ref": "#/$defs/route" },
+        "arena-runner-2": { "$ref": "#/$defs/route" },
+        "arena-runner-3": { "$ref": "#/$defs/route" },
+        "arena-runner-4": { "$ref": "#/$defs/route" },
+        "arena-judge-1": { "$ref": "#/$defs/route" },
+        "arena-judge-2": { "$ref": "#/$defs/route" },
+        "arena-judge-3": { "$ref": "#/$defs/route" },
+        "arena-judge-4": { "$ref": "#/$defs/route" },
+        "architect-runner-1": { "$ref": "#/$defs/route" },
+        "architect-runner-2": { "$ref": "#/$defs/route" },
+        "architect-runner-3": { "$ref": "#/$defs/route" },
+        "architect-runner-4": { "$ref": "#/$defs/route" },
+        "interrogate-reviewer-1": { "$ref": "#/$defs/route" },
+        "interrogate-reviewer-2": { "$ref": "#/$defs/route" },
+        "interrogate-reviewer-3": { "$ref": "#/$defs/route" },
+        "interrogate-reviewer-4": { "$ref": "#/$defs/route" }
+      }
+    }
+  },
+  "$defs": {
+    "route": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inheritParent"],
+          "properties": { "inheritParent": { "const": true } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["model", "effort"],
+          "properties": {
+            "model": { "type": "string", "minLength": 1 },
+            "effort": { "enum": ["low", "medium", "high", "xhigh", "max", "ultra"] }
+          }
+        }
+      ]
+    }
+  }
+}

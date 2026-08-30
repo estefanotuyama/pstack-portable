@@ -80,6 +80,59 @@ function providerInfo(provider) {
   };
 }
 
+function providerReadme(provider) {
+  const info = providerInfo(provider);
+  const restart = provider === "claude" ? "session" : "task";
+  return `# pstack for ${info.display}
+
+This directory is the generated ${info.display} distribution from [pstack portable](https://github.com/estefanotuyama/pstack-portable). It adapts the upstream pstack plugin to provider-native skills, agent profiles, paths, question tools, and long-running-work mechanics.
+
+Upstream pstack was created by [Lauren Tan (poteto)](https://github.com/poteto). The portable repository preserves provider-neutral source files byte for byte and records every provider-specific transformation, omission, rename, and addition in its portability manifests.
+
+## Install
+
+From a clone of the portable repository:
+
+\`\`\`bash
+node scripts/install.mjs --provider ${provider} --scope personal
+\`\`\`
+
+For project scope, pass \`--scope project --project /absolute/path/to/repo\`. The installer uses ${info.display}'s native plugin registration and refuses unmanaged collisions.
+
+Start a new ${restart} after installation, then configure the role mappings:
+
+\`\`\`text
+${info.setup}
+\`\`\`
+
+Setup validates the available model and effort pairs, writes only personal overrides, and compiles guarded native profiles. Start another new ${restart} after setup so ${info.display} loads them.
+
+## Use
+
+Invoke the main workflow with:
+
+\`\`\`text
+${info.command("poteto-mode")}
+\`\`\`
+
+The mode selects a playbook and routes each delegated role through its configured native profile. See the [pstack guide](./docs/guide/README.md) for the workflow and the [setup skill](./skills/setup-pstack/SKILL.md) for routing details.
+
+## Port guarantees
+
+- \`upstream/pstack/\` in the portable repository is the immutable source snapshot.
+- Provider-neutral files remain byte-identical.
+- Provider adaptations are deterministic and hash-recorded.
+- Missing native profiles, models, efforts, or exact fan-out fail closed instead of silently falling back.
+- The current compatibility label is \`behavior-unverified\`. Static checks validate the port mechanics, not identical model behavior.
+
+Do not edit this generated directory directly. Change the portable generator or provider configuration, run \`npm run accept-generation\`, and review the resulting manifest and hashes.
+
+## License
+
+MIT. See [LICENSE](./LICENSE) and the portable repository's [provenance record](https://github.com/estefanotuyama/pstack-portable/blob/main/PROVENANCE.json).
+`;
+}
+
 function adapterVersion(provider) {
   const inputs = [
     "scripts/generate.mjs",
@@ -597,31 +650,6 @@ function adaptMarkdown(text, relative, provider) {
     text = text.replaceAll("`~/Library/Application Support/Cursor` (`state.vscdb.backup`, and `snapshots/roots/<root>` where a `<root>` named for a folder you opened as a workspace balloons); ", "");
   }
 
-  if (relative === "README.md") {
-    text = text
-      .replace("i'm [poteto](https://x.com/poteto). i'm not a president or ceo, but i've worked with millions of lines of code at Meta, Netflix, and Cursor. i'm also on the react core team where i help build and maintain react compiler.", "i'm [poteto](https://x.com/poteto). i'm not a president or ceo, but i've worked with millions of lines of code at Meta and Netflix. i'm also on the react core team where i help build and maintain react compiler.")
-      .replace("these are the same skills i use everyday to ship high quality code at Cursor. this turns cursor into a real engineering team.", `these are the same skills i use everyday to ship high quality code. this turns ${info.display} into a real engineering team.`)
-      .replace(/^.*make-bot-ui.*\n/gm, "")
-      .replace(/\n## automations[\s\S]*?(?=\n## license)/, "")
-      .replace(/\n## install[\s\S]*?(?=\n## get started)/,
-        `\n## install\n\nfrom the portable repository, run \`node scripts/install.mjs --provider ${provider}\`. the installer asks for native scope and refuses unmanaged collisions.\n`)
-      .replace(/\n## not shipped here[\s\S]*?(?=\n## why are there no planning skills\?)/,
-        `\n## native dependencies\n\ncode cleanup is an inline outcome: remove narrating comments, unsupported guards, dead compatibility paths, and unrelated edits. real-surface verification uses an installed browser, app, terminal, or simulator capability. absence is an explicit verification risk, never a reason to pretend the surface was tested. skill authoring routes through ${info.author}.\n`)
-      .replaceAll('[`subagent_type: "poteto-agent"`](./agents/poteto-agent.md)', "the native `pstack:poteto-agent` delegate")
-      .replaceAll('`subagent_type: "Comment Sicko"`', "the native `pstack:comment-sicko` delegate")
-      .replaceAll("a read-only comment reviewer", "a comment-only reviewer")
-      .replaceAll("cursor's `/loop` command", provider === "claude" ? "Claude Code's native `/loop` command" : "an armed `/goal` plus a Desktop heartbeat or local CLI/IDE watcher")
-      .replaceAll("cursor already has", `${info.display} already has`)
-      .replaceAll("this turns cursor into", `this turns ${info.display} into`)
-      .replaceAll("cursor gives you", `${info.display} gives you`)
-      .replace(/out of the box the mode splits work by model strength:[\s\S]*?changes any of it\./,
-        `out of the box the mode routes each job through a named native profile. ${info.setup} shows and changes the provider-specific model and effort behind every role.`)
-      .replace(/\bcursor\b/gi, info.display);
-    if (provider === "codex") {
-      text = text.replace(/\n## the `poteto-agent` and Comment Sicko subagents[\s\S]*?(?=\n## principles)/,
-        "\n## the `poteto-agent` and Comment Sicko subagents\n\npstack setup installs two guarded standalone Codex agent profiles: `pstack-poteto-agent` for full playbook delegation and `pstack-comment-sicko` for comment-only cleanup. the plugin does not register custom agents itself. invoke them through the pstack workflows, usually `$pstack:poteto-mode` and `$pstack:no-comments`.\n");
-    }
-  }
   if (relative === "docs/guide/01-setup.md") {
     text = text
       .replace(/In a Cursor chat, run:\n\n```text\n\/add-plugin pstack\n```\n\nCursor confirms the plugin is installed\./,
@@ -751,6 +779,7 @@ function adaptMarkdown(text, relative, provider) {
 
 function transform(relative, buffer, provider) {
   if (!TEXT_EXTENSIONS.has(path.extname(relative))) return buffer;
+  if (relative === "README.md") return Buffer.from(providerReadme(provider));
   let text = buffer.toString("utf8");
   if (relative === "skills/setup-pstack/SKILL.md") return Buffer.from(setupSkill(provider));
   if (relative === "skills/poteto-mode/scripts/worktree-audit.sh") text = rewriteWorktreeAudit(text);
@@ -854,7 +883,8 @@ function writeCodexHelpers(dist, potetoInstructions, records) {
 
 function transformationReason(relative, outputRelative, provider) {
   const reasons = [];
-  if (relative.endsWith(".md")) reasons.push(`${provider}-native commands, routing, paths, history, questions, and local execution semantics`);
+  if (relative === "README.md") reasons.push("upstream authorial README replaced by neutral portable distribution documentation");
+  else if (relative.endsWith(".md")) reasons.push(`${provider}-native commands, routing, paths, history, questions, and local execution semantics`);
   if (relative.startsWith("skills/poteto-mode/scripts/watch-pr/")) reasons.push("source-provider review-bot protocol removed while generic review handling is preserved");
   if (relative === "skills/poteto-mode/scripts/worktree-audit.sh") reasons.push("undocumented source-provider transcript discovery removed");
   if (["skills/poteto-mode/scripts/package.json", "skills/poteto-mode/scripts/bun.lock"].includes(relative)) reasons.push("source-provider package namespace replaced by the portable package namespace");

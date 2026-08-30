@@ -217,9 +217,9 @@
       "source": "README.md",
       "output": "README.md",
       "class": "transform",
-      "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
+      "reason": "upstream authorial README replaced by neutral portable distribution documentation",
       "sourceSha256": "5914f5535383e2e1c2a19f6ea53902016989a1a71b04f42a7911e1e85bcb8d33",
-      "outputSha256": "9435f16d1bdd32386e2a93b16586eb5ddc73d81738d156744acfd1f4c144678d"
+      "outputSha256": "56db8297ef5a7dbdb8f1fe3fd557c4b9dfd079176a309b7f29fef876185d6be1"
     },
     {
       "source": "skills/architect/references/design-red-flags.md",

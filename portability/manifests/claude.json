@@ -223,9 +223,9 @@
       "source": "README.md",
       "output": "README.md",
       "class": "transform",
-      "reason": "claude-native commands, routing, paths, history, questions, and local execution semantics",
+      "reason": "upstream authorial README replaced by neutral portable distribution documentation",
       "sourceSha256": "5914f5535383e2e1c2a19f6ea53902016989a1a71b04f42a7911e1e85bcb8d33",
-      "outputSha256": "b01d6b671592ba48f8f2063f0cb4d3c6332372d50eb090fab16db5d883183359"
+      "outputSha256": "2f6cea1600b5ba6e53ce4e6712f8a16d288e5b01ad8bb573a66ded9bcd09d6a1"
     },
     {
       "source": "skills/architect/references/design-red-flags.md",

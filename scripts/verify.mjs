@@ -43,7 +43,7 @@ check(treeHash(UPSTREAM) === provenance.source.snapshotTreeSha256, "upstream sna
 check(fs.readFileSync(path.join(ROOT, "LICENSE")).equals(fs.readFileSync(path.join(UPSTREAM, "LICENSE"))), "root LICENSE differs from upstream");
 check(JSON.stringify(fs.readdirSync(path.join(ROOT, "upstream")).sort()) === JSON.stringify(["pstack"]), "upstream contains something other than the pstack subtree");
 const lockedConfigHashes = {
-  "config/defaults/claude.json": "86ad99e484b8a1816d357f963747a62b5f00d0c802441a3324af77732ab4bed3",
+  "config/defaults/claude.json": "afd1b8b0dd1f63f8cf96a4c48953889ef50d63265158827dbcd26f2cd17c1548",
   "config/defaults/codex.json": "50bfc0af505830e78022633873a5f4f9d422f359f18431142184002d8974e242",
   "config/schema.json": "8711173fcfee458de28f38af7e0135540bd6b2ceb520d9055eeacc997653af44",
 };
@@ -203,8 +203,22 @@ check(claudeMarketplace.plugins.find((plugin) => plugin.name === "pstack")?.vers
 
 const claudeRoles = readJson(path.join(ROOT, "config", "defaults", "claude.json")).roles;
 const codexRoles = readJson(path.join(ROOT, "config", "defaults", "codex.json")).roles;
-check(claudeRoles.feature.model === "claude-opus-5" && claudeRoles.feature.effort === "xhigh", "Claude feature mapping drifted");
+check(claudeRoles.feature.model === "claude-opus-5" && claudeRoles.feature.effort === "max", "Claude feature mapping drifted");
+check(claudeRoles.hillclimb.model === "claude-opus-5" && claudeRoles.hillclimb.effort === "xhigh", "Claude hillclimb mapping drifted");
+check(claudeRoles["hardest-precise"].model === "claude-fable-5" && claudeRoles["hardest-precise"].effort === "max", "Claude hardest-precise mapping drifted");
 check(claudeRoles["why-synthesizer"].model === "claude-opus-5" && claudeRoles["why-synthesizer"].effort === "max", "Claude why-synthesizer mapping drifted");
+for (const role of ["reflect-tooling", "reflect-divergent"]) {
+  check(claudeRoles[role].model === "claude-opus-5" && claudeRoles[role].effort === "xhigh", `Claude ${role} mapping drifted`);
+}
+for (const prefix of ["how-critic", "arena-runner", "arena-judge", "architect-runner", "interrogate-reviewer"]) {
+  const routes = [1, 2, 3, 4].map((slot) => claudeRoles[`${prefix}-${slot}`]);
+  check(JSON.stringify(routes) === JSON.stringify([
+    { model: "claude-fable-5", effort: "max" },
+    { model: "claude-opus-5", effort: "max" },
+    { model: "claude-opus-5", effort: "xhigh" },
+    { model: "claude-sonnet-5", effort: "xhigh" },
+  ]), `Claude ${prefix} panel mapping drifted`);
+}
 check(codexRoles.feature.model === "gpt-5.6-sol" && codexRoles.feature.effort === "xhigh", "Codex feature mapping drifted");
 check(codexRoles["how-explorer"].model === "gpt-5.6-luna" && codexRoles["how-explorer"].effort === "xhigh", "Codex how-explorer mapping drifted");
 check(codexRoles["how-explainer"].model === "gpt-5.6-sol" && codexRoles["how-explainer"].effort === "xhigh", "Codex how-explainer mapping drifted");

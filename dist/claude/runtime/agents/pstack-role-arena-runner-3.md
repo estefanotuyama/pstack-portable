@@ -1,10 +1,10 @@
 ---
 name: pstack-role-arena-runner-3
 description: pstack worker for the arena-runner-3 semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-sonnet-5
+model: claude-opus-5
 effort: xhigh
 ---
-<!-- pstack-managed-v1 sha256:f0b3423e71ffb52c445bc5da23ef57d95917c8e7e48e165657286fe24b2b9123 -->
+<!-- pstack-managed-v1 sha256:00d9a7fb11c73526684b9610cd830aa7a0274ee38673a7b11ce0c02332e2c84d -->
 
 # pstack-role-arena-runner-3
 

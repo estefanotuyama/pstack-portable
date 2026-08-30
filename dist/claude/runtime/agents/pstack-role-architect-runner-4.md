@@ -1,10 +1,10 @@
 ---
 name: pstack-role-architect-runner-4
 description: pstack worker for the architect-runner-4 semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-opus-5
+model: claude-sonnet-5
 effort: xhigh
 ---
-<!-- pstack-managed-v1 sha256:172e4095032de90ab53aac72f70672aa4e7641afc643daa25b0431f0c260ec82 -->
+<!-- pstack-managed-v1 sha256:c7024ac15be0022f49a818679bc73a5e7c7f30e5c831a4953f6c0064f9218c6c -->
 
 # pstack-role-architect-runner-4
 

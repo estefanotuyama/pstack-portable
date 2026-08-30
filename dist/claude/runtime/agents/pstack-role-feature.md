@@ -2,9 +2,9 @@
 name: pstack-role-feature
 description: pstack worker for the feature semantic role. Use only when a pstack workflow requests this exact role.
 model: claude-opus-5
-effort: xhigh
+effort: max
 ---
-<!-- pstack-managed-v1 sha256:993a5fbab151dcced8c40307298c01568cdb11c7b663b72c1c26cdf96421dc23 -->
+<!-- pstack-managed-v1 sha256:44854a439e33758ee74777b7f0841cd4121dd7a8efed87eebb1fc09bfef5220b -->
 
 # pstack-role-feature
 

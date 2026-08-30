@@ -1,10 +1,10 @@
 ---
 name: pstack-role-hardest-precise
 description: pstack worker for the hardest-precise semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-opus-5
+model: claude-fable-5
 effort: max
 ---
-<!-- pstack-managed-v1 sha256:9ff7be6c672454e9c9d4aacd8d828d57d39823f574f06106d92c9e9f52c0b8ef -->
+<!-- pstack-managed-v1 sha256:e6290702972d1d75e8797913cafe4f41c39025a718c610020945d92eecf91be7 -->
 
 # pstack-role-hardest-precise
 

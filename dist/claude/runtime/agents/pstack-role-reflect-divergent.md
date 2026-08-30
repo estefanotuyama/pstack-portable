@@ -1,10 +1,10 @@
 ---
 name: pstack-role-reflect-divergent
 description: No-mutation pstack worker for the reflect-divergent semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-fable-5
-effort: max
+model: claude-opus-5
+effort: xhigh
 ---
-<!-- pstack-managed-v1 sha256:8f5ed8435fbc0d897b51fbad02f1b374045dc694acb02a00c2a5963d68d0d945 -->
+<!-- pstack-managed-v1 sha256:7a55005d1c456dbc526beb432dd1b6c18d3457bc508f6fb6f6716c98ac2b0ea8 -->
 
 # pstack-role-reflect-divergent
 

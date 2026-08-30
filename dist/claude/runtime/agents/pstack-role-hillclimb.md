@@ -2,9 +2,9 @@
 name: pstack-role-hillclimb
 description: pstack worker for the hillclimb semantic role. Use only when a pstack workflow requests this exact role.
 model: claude-opus-5
-effort: max
+effort: xhigh
 ---
-<!-- pstack-managed-v1 sha256:9618b32f488feaa8845c4395bdcb6ef5fe2fd1583c2885f3ff4428cfabf6793d -->
+<!-- pstack-managed-v1 sha256:c6b820bdbfb3f092b4b6db712e60e463fdd2fac3bc0d0636ab2d9d3d88ad1587 -->
 
 # pstack-role-hillclimb
 

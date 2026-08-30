@@ -1,12 +1,12 @@
 ---
 name: pstack-role-how-critic-4
 description: Read-only pstack worker for the how-critic-4 semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-opus-5
+model: claude-sonnet-5
 effort: xhigh
 tools: Read, Grep, Glob
 permissionMode: plan
 ---
-<!-- pstack-managed-v1 sha256:35c8efb045dbcc8d97bcfeef7d31579baef988607f45dc743e5bb246b38fb47d -->
+<!-- pstack-managed-v1 sha256:84f49c3afcab57f91e147030326842327da9769f19682d92c3ed78643b5412d1 -->
 
 # pstack-role-how-critic-4
 

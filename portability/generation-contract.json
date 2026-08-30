@@ -3,8 +3,8 @@
   "sourceTreeSha256": "bd6ce8e29c45710403a4ac193cb4f4f3553af96f67de63555e3a44cc4e4716f5",
   "providers": {
     "claude": {
-      "version": "0.14.4-portable.claude.a83366a80de0",
-      "distTreeSha256": "08a6442f447d464e9dfa923d13566b51e455983eb20ef3ea086f08fe43276eb2",
+      "version": "0.14.4-portable.claude.9b2368aa6ef7",
+      "distTreeSha256": "12fcc3611b5958f573f6e81e68e7c25719a1c69ec4ccd232f76c311e93f86776",
       "manifestSha256": "3e9eea2dce4ca1144701b954fc896fa2966d8c746e19319a3afb4933da01fa7f"
     },
     "codex": {
@@ -13,5 +13,5 @@
       "manifestSha256": "df787020dbff8ce197084460df367a9b60c176c43e74903f2f0c2e543b017755"
     }
   },
-  "claudeMarketplaceSha256": "f0afc249588a1b2b974293f26da9d055c2bad8da75af633888a5bde5a154a116"
+  "claudeMarketplaceSha256": "4295489cc3d5a8f6af7f3dd27bdd19e2735c9dc56a9b7ff36e774f5b759626e3"
 }

@@ -26,21 +26,24 @@ The JSON files under `config/defaults/` are the editable source of truth. Verifi
 
 Claude Code groups:
 
-- `feature` and `refactoring`: Opus 5, xhigh.
-- `bug-fix`, `perf-issue`, `hillclimb`, `hardest-precise`, `how-explainer`, `why-synthesizer`, and `reflect-tooling`: Opus 5, max.
-- `judgment`, `prose`, `hardest-ambiguous`, `reflect-judgment`, `reflect-divergent`, and `reflect-synthesizer`: Fable 5, max.
+- `judgment`, `prose`, both hardest roles, `reflect-judgment`, and `reflect-synthesizer`: Fable 5, max.
+- `feature`, `refactoring`, `bug-fix`, `perf-issue`, `how-explainer`, and `why-synthesizer`: Opus 5, max.
+- `hillclimb`, `reflect-tooling`, and `reflect-divergent`: Opus 5, xhigh.
 - `how-explorer`, `why-investigator`, `swarm-worker`, and `verification-worker`: Sonnet 5, xhigh.
-- How critics, Arena runners, Architect runners, and Interrogate reviewers: Fable max, Opus max, Sonnet xhigh, Opus xhigh.
+- How critics, Arena runners, Architect runners, and Interrogate reviewers: Fable max, Opus max, Opus xhigh, Sonnet xhigh.
 - Arena judges use the same four slots.
 
 Codex groups:
 
-- `feature` and `refactoring`: Sol, xhigh.
-- `bug-fix`, `perf-issue`, `hillclimb`, `judgment`, `prose`, both hardest roles, `how-explainer`, `why-synthesizer`, and all Reflect roles: Sol, max.
-- `how-explorer`: Luna, xhigh.
-- `why-investigator`, `swarm-worker`, and `verification-worker`: Terra, xhigh.
-- How critics, Arena runners, Architect runners, and Interrogate reviewers: Sol max, Sol max, Terra xhigh, Sol xhigh.
-- Arena judges: Terra xhigh, Sol max, Terra xhigh, Sol xhigh.
+- `feature`, `refactoring`, `bug-fix`, `perf-issue`, `judgment`, `how-explainer`, `why-synthesizer`, `reflect-judgment`, and `reflect-synthesizer`: Sol, xhigh.
+- Both hardest roles: Sol, max.
+- `hillclimb`, `prose`, `why-investigator`, `reflect-tooling`, and `verification-worker`: Terra, high.
+- `how-explorer` and `reflect-divergent`: Luna, xhigh.
+- `swarm-worker`: Terra, xhigh.
+- How critics: Sol xhigh, Terra xhigh, Terra high, Luna xhigh.
+- Arena runners and Architect runners: Sol max, Sol xhigh, Terra xhigh, Terra xhigh.
+- Arena judges: Terra xhigh, Sol xhigh, Terra high, Sol xhigh.
+- Interrogate reviewers: Sol xhigh, Terra xhigh, Terra high, Luna xhigh.
 
 User overrides live outside projects:
 

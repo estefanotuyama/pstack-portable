@@ -1,12 +1,12 @@
 ---
 name: pstack-role-arena-judge-3
 description: Read-only pstack worker for the arena-judge-3 semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-sonnet-5
+model: claude-opus-5
 effort: xhigh
 tools: Read, Grep, Glob
 permissionMode: plan
 ---
-<!-- pstack-managed-v1 sha256:5122d801e694603d1ed6b2fa1215688332a62c08cfffb28d69c951aacbb9e13d -->
+<!-- pstack-managed-v1 sha256:505271901f29b4e5964460a1808e28d1bd126372258c0e0e065d751ca8859a7d -->
 
 # pstack-role-arena-judge-3
 

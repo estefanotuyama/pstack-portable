@@ -1,12 +1,12 @@
 ---
 name: pstack-role-interrogate-reviewer-4
 description: Read-only pstack worker for the interrogate-reviewer-4 semantic role. Use only when a pstack workflow requests this exact role.
-model: claude-opus-5
+model: claude-sonnet-5
 effort: xhigh
 tools: Read, Grep, Glob
 permissionMode: plan
 ---
-<!-- pstack-managed-v1 sha256:3e58aa1c97a7ed17757685cadf16d2225570a7aab132e80a3fee1a5d9b92d546 -->
+<!-- pstack-managed-v1 sha256:69fb74a213cd11745cf21175601be02c38c7a9ddfec4d14b72b2209298c9dced -->
 
 # pstack-role-interrogate-reviewer-4
 

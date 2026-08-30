@@ -2,9 +2,9 @@
 name: pstack-role-refactoring
 description: pstack worker for the refactoring semantic role. Use only when a pstack workflow requests this exact role.
 model: claude-opus-5
-effort: xhigh
+effort: max
 ---
-<!-- pstack-managed-v1 sha256:1d527f1c44ab8160d4675f3dffcbd0864ca76c09fa5b7be49d4611dff287d642 -->
+<!-- pstack-managed-v1 sha256:2a052ebee7d579aaf33c17e7b61ebd69ab27c4c7fa4e11665ff6de9f049e442f -->
 
 # pstack-role-refactoring
 

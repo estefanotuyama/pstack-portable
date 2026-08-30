@@ -2,9 +2,9 @@
 name: pstack-role-reflect-tooling
 description: No-mutation pstack worker for the reflect-tooling semantic role. Use only when a pstack workflow requests this exact role.
 model: claude-opus-5
-effort: max
+effort: xhigh
 ---
-<!-- pstack-managed-v1 sha256:cdc41818a220a4c439d384dc26089457c3c1cb80692d39dd19825ea5027880ee -->
+<!-- pstack-managed-v1 sha256:48360cefdb4c7537081dc9c9d680b7027442b62929bde4a8b91bde52674fa2d8 -->
 
 # pstack-role-reflect-tooling
 

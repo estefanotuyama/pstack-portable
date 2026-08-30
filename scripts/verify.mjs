@@ -44,7 +44,7 @@ check(fs.readFileSync(path.join(ROOT, "LICENSE")).equals(fs.readFileSync(path.jo
 check(JSON.stringify(fs.readdirSync(path.join(ROOT, "upstream")).sort()) === JSON.stringify(["pstack"]), "upstream contains something other than the pstack subtree");
 const lockedConfigHashes = {
   "config/defaults/claude.json": "86ad99e484b8a1816d357f963747a62b5f00d0c802441a3324af77732ab4bed3",
-  "config/defaults/codex.json": "0933034372581c2902088ce0ee66b26cb39f231ac72889ae13c4f85407be512c",
+  "config/defaults/codex.json": "50bfc0af505830e78022633873a5f4f9d422f359f18431142184002d8974e242",
   "config/schema.json": "8711173fcfee458de28f38af7e0135540bd6b2ceb520d9055eeacc997653af44",
 };
 for (const [relative, expected] of Object.entries(lockedConfigHashes)) {
@@ -207,7 +207,7 @@ check(claudeRoles.feature.model === "claude-opus-5" && claudeRoles.feature.effor
 check(claudeRoles["why-synthesizer"].model === "claude-opus-5" && claudeRoles["why-synthesizer"].effort === "max", "Claude why-synthesizer mapping drifted");
 check(codexRoles.feature.model === "gpt-5.6-sol" && codexRoles.feature.effort === "xhigh", "Codex feature mapping drifted");
 check(codexRoles["how-explorer"].model === "gpt-5.6-luna" && codexRoles["how-explorer"].effort === "xhigh", "Codex how-explorer mapping drifted");
-check(codexRoles["how-explainer"].model === "gpt-5.6-sol" && codexRoles["how-explainer"].effort === "max", "Codex how-explainer mapping drifted");
+check(codexRoles["how-explainer"].model === "gpt-5.6-sol" && codexRoles["how-explainer"].effort === "xhigh", "Codex how-explainer mapping drifted");
 
 if (failures.length) {
   console.error(`${failures.length} verification failure(s):`);

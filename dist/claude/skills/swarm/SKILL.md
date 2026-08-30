@@ -4,6 +4,11 @@ description: "Fan out N parallel workers, drain them, and return one report. Use
 disable-model-invocation: true
 ---
 
+## Provider delegation contract
+
+Before the first native role launch, read and obey `~/.pstack/providers/claude/runtime/DELEGATION.md`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.
+
+
 # Swarm
 
 Fan out N parallel isolated local workers. They may cover separate slices, race the same brief, or mix both. The parent waits, aggregates, and returns one report.

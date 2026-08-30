@@ -58,12 +58,11 @@ if (options.project) {
   }
 }
 
-const installedPlugin = fs.existsSync(path.join(ROOT, "dist", options.provider, "skills", "poteto-mode", "SKILL.md"))
-  ? path.join(ROOT, "dist", options.provider)
-  : ROOT;
-const potetoInstructions = fs.readFileSync(path.join(installedPlugin, "skills", "poteto-mode", "SKILL.md"), "utf8");
 const helpers = [];
 if (options.provider === "codex") {
+  const installedPlugin = fs.existsSync(path.join(ROOT, "dist", options.provider, "skills", "poteto-mode", "SKILL.md"))
+    ? path.join(ROOT, "dist", options.provider)
+    : ROOT;
   for (const file of ["pstack-poteto-agent.toml", "pstack-comment-sicko.toml"]) {
     const source = path.join(installedPlugin, "runtime", "agents", file);
     const target = path.join(options.output, file);
@@ -71,7 +70,7 @@ if (options.provider === "codex") {
     helpers.push([target, fs.readFileSync(source, "utf8")]);
   }
 }
-const written = compileAgents({ ...options, potetoInstructions });
+const written = compileAgents(options);
 
 for (const [target, value] of helpers) {
     writeFile(target, value);

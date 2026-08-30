@@ -4,6 +4,11 @@ description: "Spawn N parallel candidates at the same task, pick a base, graft t
 disable-model-invocation: true
 ---
 
+## Provider delegation contract
+
+Before the first native role launch, read and obey `~/.pstack/providers/claude/runtime/DELEGATION.md`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.
+
+
 # Arena
 
 Fan out N parallel attempts at the same task. Read every candidate end to end. Pick the strongest as the base. Graft the best ideas from the others into it. Verify the synthesized result.

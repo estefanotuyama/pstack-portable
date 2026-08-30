@@ -38,6 +38,7 @@ test("unavailable model-effort pairs fail before writes", () => {
   const availableRoutes = [
     { model: "gpt-5.6-sol", effort: "max" },
     { model: "gpt-5.6-sol", effort: "xhigh" },
+    { model: "gpt-5.6-terra", effort: "high" },
     { model: "gpt-5.6-terra", effort: "xhigh" },
     { model: "gpt-5.6-luna", effort: "max" },
   ];
@@ -50,13 +51,14 @@ test("managed profile modification is guarded", () => {
   const availableRoutes = [
     { model: "gpt-5.6-sol", effort: "max" },
     { model: "gpt-5.6-sol", effort: "xhigh" },
+    { model: "gpt-5.6-terra", effort: "high" },
     { model: "gpt-5.6-terra", effort: "xhigh" },
     { model: "gpt-5.6-luna", effort: "xhigh" },
   ];
-  compileAgents({ provider: "codex", output: root, availableRoutes, potetoInstructions: "contract" });
+  compileAgents({ provider: "codex", output: root, availableRoutes });
   const file = path.join(root, "pstack-role-feature.toml");
   fs.appendFileSync(file, "modified\n");
-  assert.throws(() => compileAgents({ provider: "codex", output: root, availableRoutes, potetoInstructions: "contract" }), /managed payload was modified/);
+  assert.throws(() => compileAgents({ provider: "codex", output: root, availableRoutes }), /managed payload was modified/);
 });
 
 test("modified Codex helper fails before role profiles are updated", () => {
@@ -65,6 +67,7 @@ test("modified Codex helper fails before role profiles are updated", () => {
   const routes = [
     ["gpt-5.6-sol", "max"],
     ["gpt-5.6-sol", "xhigh"],
+    ["gpt-5.6-terra", "high"],
     ["gpt-5.6-terra", "xhigh"],
     ["gpt-5.6-luna", "xhigh"],
   ];

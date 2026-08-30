@@ -248,7 +248,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "585d7a9e03c0cced84c80d4b60c09c8dc76010bb36c579f92d9e4deafec53df7",
-      "outputSha256": "dc7962368b05d3aa8779740cce8065d9baa7523e6954cbd7a29a158f1802372c"
+      "outputSha256": "e8f3f603765ad32edadcfec5a70cbb1a2e320c9ecdf4b58096822ab2dbcf3c06"
     },
     {
       "source": "skills/arena/SKILL.md",
@@ -256,7 +256,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "a2241e8500a44d9c16bd3260c8c70e28c4bb8a857c33061d42b267057e6f7093",
-      "outputSha256": "2d10ca7235cd3e5c295adf647568af1b2ed8423a860e38ab306ce617fd091a74"
+      "outputSha256": "3cd41b44967fd5404f08f3233c7a4acdbcca5b8d60484162b97ade8094930ffe"
     },
     {
       "source": "skills/automate-me/SKILL.md",
@@ -264,7 +264,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "34e7eab6f495093d474817bc4c13f26bcf5fafa439f2761b8c1ec72b07487764",
-      "outputSha256": "69706511637ace19c5af802afe61e301fca30db9ed3f55788718022cc4079474"
+      "outputSha256": "f3dd3160c9fe0550132be0ec3e79ec9dc6bd55b4c66a0e948e0eee26ace85ae7"
     },
     {
       "source": "skills/blast-radius/SKILL.md",
@@ -358,7 +358,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "fe503e7a9b2a3a7ad2622a2de6124cb06c466922fb44bc61817b49b52042b885",
-      "outputSha256": "7e79ca41f7d4311f3b77c7d9ca0837bbf483198f9575235d1c03fdc3725f0bbc"
+      "outputSha256": "e64e8e4fa7b5d1ad73affa17413ad632d544799226ff7f2387f2ce5c1bee5bf7"
     },
     {
       "source": "skills/interrogate/references/code-quality-review.md",
@@ -394,7 +394,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "a009220dfe6869c8f7980a94fb1c9c7763a081a0b32fb6d0afb65b8ff1868146",
-      "outputSha256": "be0358fc15046a3fd6483531ebc1814a3896459ad6ef49625455dcf205096429"
+      "outputSha256": "d9faa9116f5d661fdd943fd7d70736e3bdae4898f89aa7844766505ac46b3b9d"
     },
     {
       "source": "skills/maintain-verification-skill/SKILL.md",
@@ -755,7 +755,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "3b6793bdaeada0bfc7291bcc00422093bd8d10e64a9bc3b6707008ba3c4c7316",
-      "outputSha256": "e11a2d608d4d6d66d31108df764756b47ecda97dcc522e62565a7d59116209e8"
+      "outputSha256": "ac7e113a8a87d89951f414c4c46ae093a20033be8aedd0f09667c33710976a27"
     },
     {
       "source": "skills/principle-boundary-discipline/SKILL.md",
@@ -931,7 +931,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "90d290daec500f548a167bbd20d69a3a248e345c546ca847ca12967d1c99cbf3",
-      "outputSha256": "e64fcd74360e15dd09bfe3fa39cc576e1de540ad082253c210530e900778e7e9"
+      "outputSha256": "fd2a7078a3c32dbe7eb53d1222d5ad9a59ceaa8463a022d99c46dcff93f51d7e"
     },
     {
       "source": "skills/reflect/references/divergent-reviewer.md",
@@ -971,7 +971,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "5485347991eb60ee226ca78c5972f9c694f6927cff3263b7f48b631ed7a9de56",
-      "outputSha256": "1e8b41d68f623cb08da6fce259ed0062efe24df42295e81c7dd0ddd50de7d4e6"
+      "outputSha256": "8e7bd2d628fb9b80373846b0a4f0976ff30f578e17f8db53a50f05865f36ede7"
     },
     {
       "source": "skills/setup-pstack/SKILL.md",
@@ -1001,7 +1001,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "b99833c41a8781a6af191487f1af37711a3198b98f9373e3c02292b8a6e09aba",
-      "outputSha256": "4d02f4e6ee627c952ab4c33cd4de16f58c957903c4fdaa8da88445e9aa6542d2"
+      "outputSha256": "e04c176d2a631a5f2100df7b9cc2278f74ddcf0fba90f6d3af0984c42144b1cd"
     },
     {
       "source": "skills/swarm/SKILL.md",
@@ -1009,7 +1009,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "8e6494e296af5496cacb0fb83f33f647c84286d2e1d1b85580bc0f0f577a81cd",
-      "outputSha256": "737acdf87ac5297ab4fa1725e5c96df4bdef2044a95a01338a12171cdd459188"
+      "outputSha256": "b7a899ab9b29034e4b4e4d2e5fd75e39066ee7c87bc7c03b9b344759b0ab1cc2"
     },
     {
       "source": "skills/tdd/SKILL.md",
@@ -1148,7 +1148,7 @@
       "class": "transform",
       "reason": "codex-native commands, routing, paths, history, questions, and local execution semantics",
       "sourceSha256": "dc8f2d8a7dbef7d0467cca8e6d055a4dbde027db6e2cbbfb18aa9071d8f20b6c",
-      "outputSha256": "ce46ee91406796b55605f9cbc24f4631ed2e2922020ae78030f58e278e8d015e"
+      "outputSha256": "4372ecbc1fac42e3f30bf2c5e1903a37f4fba8a7ff844edfa8fdd0b440c79773"
     },
     {
       "output": "skills/author-skill/SKILL.md",
@@ -1174,6 +1174,11 @@
       "output": "config/schema.json",
       "class": "add",
       "reason": "sparse override schema"
+    },
+    {
+      "output": "runtime/DELEGATION.md",
+      "class": "add",
+      "reason": "provider-native profile availability, fallback, brief, and context-isolation contract"
     },
     {
       "output": "runtime/agents/pstack-role-architect-runner-1.toml",

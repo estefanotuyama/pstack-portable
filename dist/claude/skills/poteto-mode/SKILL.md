@@ -4,6 +4,11 @@ description: poteto's agent style for concise, detailed responses, deliberate su
 disable-model-invocation: true
 ---
 
+## Provider delegation contract
+
+Before the first native role launch, read and obey `~/.pstack/providers/claude/runtime/DELEGATION.md`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.
+
+
 # Poteto mode
 
 ## Non-negotiables

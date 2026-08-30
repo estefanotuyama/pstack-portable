@@ -3,6 +3,11 @@ name: interrogate
 description: "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles."
 ---
 
+## Provider delegation contract
+
+Before the first native role launch, read and obey `~/.pstack/providers/codex/runtime/DELEGATION.md`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.
+
+
 # Interrogate
 
 Spawn the four configured native reviewer profiles to adversarially review code changes. Each model gets the same prompt and rubric. The adversarial signal comes from model diversity, not assigned personas. Models differ in blind spots, priors, and reasoning patterns. Agreement across models is high-confidence signal; lone-model findings are worth reading but lower confidence.

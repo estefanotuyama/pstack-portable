@@ -4,6 +4,11 @@ description: "Keep a reviewable decision trail for long-running or unattended wo
 disable-model-invocation: true
 ---
 
+## Provider delegation contract
+
+Before the first native role launch, read and obey `~/.pstack/providers/claude/runtime/DELEGATION.md`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.
+
+
 # Show me your work
 
 For work a human reviews after the fact, a decision trail lets them reconstruct what was decided, why, and on what evidence, without rerunning the work or reading the whole transcript. Keep one canonical log so the trail is consistent and a future agent can find it.

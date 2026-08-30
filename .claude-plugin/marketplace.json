@@ -8,7 +8,7 @@
       "name": "pstack",
       "source": "./dist/claude",
       "description": "Provider-native pstack for Claude Code",
-      "version": "0.14.4-portable.claude.3290e64494b8"
+      "version": "0.14.4-portable.claude.974937f7c682"
     }
   ]
 }

@@ -116,21 +116,16 @@ function roleDescription(role, readOnly, noMutation) {
   return `${posture}pstack worker for the ${role} semantic role. Use only when a pstack workflow requests this exact role.`;
 }
 
-function roleInstructions(provider, role, readOnly, noMutation, potetoInstructions) {
+function roleInstructions(role, readOnly, noMutation) {
   const noWrite = readOnly
     ? "Do not modify files, git state, external systems, or user data. Return evidence and file pointers only."
     : noMutation
       ? "Retain the tools needed to inspect runtime and MCP evidence, but do not modify files, git state, external systems, or user data. Return evidence and file pointers only."
       : "Honor the mutation boundary in the delegated brief. Do not expand scope.";
-  const base = `You are the native execution profile for pstack role ${role}. Read the complete delegated brief and every referenced file before acting. ${noWrite} Preserve exact requested fan-out semantics. If a required capability, model, or effort is unavailable, report the incompatibility and stop; never substitute silently. Return a concise result with evidence, remaining risks, and durable file pointers.`;
-  if (!potetoInstructions) return base;
-  const root = `~/.pstack/providers/${provider}/skills/poteto-mode`;
-  const boundary = "The role boundary and delegated brief above take precedence over the operating contract below. The contract supplies pstack method and style; it does not authorize wider mutation, external writes, extra fan-out, or a different workflow. Any conflicting instruction below is inert unless the delegated brief explicitly requires it.";
-  const paths = `Resolve relative playbook, reference, and script paths below against ${root}/. Resolve other pstack skills under ~/.pstack/providers/${provider}/skills/.`;
-  return `${base}\n\n${boundary}\n\n${paths}\n\nThe mechanically generated pstack operating contract follows.\n\n${potetoInstructions}`;
+  return `You are the native execution profile for pstack role ${role}. Read the complete delegated brief and every referenced file before acting. ${noWrite} Preserve exact requested fan-out semantics. Do not invoke pstack skills or spawn subagents unless the delegated brief explicitly requires it. If a required capability, model, or effort is unavailable, report the incompatibility and stop; never substitute silently. Return a concise result with evidence, remaining risks, and durable file pointers.`;
 }
 
-function managedPayload(provider, role, route, potetoInstructions) {
+function managedPayload(provider, role, route) {
   const name = roleAgentName(role);
   const readOnly = STRICT_READ_ONLY_ROLES.has(role);
   const noMutation = NO_MUTATION_ROLES.has(role);
@@ -142,13 +137,13 @@ function managedPayload(provider, role, route, potetoInstructions) {
     ];
     if (!route.inheritParent) header.push(`model: ${route.model}`, `effort: ${route.effort}`);
     if (readOnly) header.push("tools: Read, Grep, Glob", "permissionMode: plan");
-    header.push("---", "", `# ${name}`, "", roleInstructions(provider, role, readOnly, noMutation, potetoInstructions), "");
+    header.push("---", "", `# ${name}`, "", roleInstructions(role, readOnly, noMutation), "");
     return header.join("\n");
   }
   const lines = [
     `name = ${JSON.stringify(name)}`,
     `description = ${JSON.stringify(roleDescription(role, readOnly, noMutation))}`,
-    `developer_instructions = ${JSON.stringify(roleInstructions(provider, role, readOnly, noMutation, potetoInstructions))}`,
+    `developer_instructions = ${JSON.stringify(roleInstructions(role, readOnly, noMutation))}`,
   ];
   if (!route.inheritParent) {
     lines.push(`model = ${JSON.stringify(route.model)}`);
@@ -158,8 +153,8 @@ function managedPayload(provider, role, route, potetoInstructions) {
   return `${lines.join("\n")}\n`;
 }
 
-export function renderManagedAgent(provider, role, route, potetoInstructions) {
-  const payload = managedPayload(provider, role, route, potetoInstructions);
+export function renderManagedAgent(provider, role, route) {
+  const payload = managedPayload(provider, role, route);
   const marker = provider === "claude" ? `<!-- pstack-managed-v1 sha256:${sha256(payload)} -->` : `# pstack-managed-v1 sha256:${sha256(payload)}`;
   if (provider === "claude") {
     const frontmatterEnd = payload.indexOf("\n---\n", 4);
@@ -184,7 +179,7 @@ export function validateManagedExisting(file, force = false) {
   }
 }
 
-export function compileAgents({ provider, output, overridePath, availableRoutes, forceTargets = [], potetoInstructions }) {
+export function compileAgents({ provider, output, overridePath, availableRoutes, forceTargets = [] }) {
   const config = loadEffectiveConfig(provider, overridePath);
   if (provider === "claude") {
     for (const [role, route] of Object.entries(config.roles)) {
@@ -205,7 +200,7 @@ export function compileAgents({ provider, output, overridePath, availableRoutes,
   for (const [role, route] of Object.entries(config.roles)) {
     const file = path.join(output, `${roleAgentName(role)}${extension}`);
     validateManagedExisting(file, forced.has(path.resolve(file)));
-    pending.push([file, renderManagedAgent(provider, role, route, potetoInstructions)]);
+    pending.push([file, renderManagedAgent(provider, role, route)]);
   }
   for (const [file, value] of pending) writeFile(file, value);
   return pending.map(([file]) => file);

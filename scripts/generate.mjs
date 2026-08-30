@@ -355,6 +355,34 @@ ${explicit}---
 `;
 }
 
+function delegationContract(provider) {
+  const setup = provider === "claude" ? "/pstack:setup-pstack" : "$pstack:setup-pstack";
+  const restart = provider === "claude" ? "session" : "task";
+  const generalProfile = provider === "claude" ? "pstack:poteto-agent" : "pstack-poteto-agent";
+  const isolation = provider === "claude"
+    ? "Launch the exact named custom agent in a fresh subagent context. Pass only the self-contained brief; do not relay the whole conversation."
+    : "Launch the exact named custom agent with `fork_turns: \"none\"`. Never accept the full-history default.";
+  return `# ${provider === "claude" ? "Claude Code" : "Codex"} delegation contract
+
+This file owns provider-specific delegation for every pstack workflow that names a \`pstack-role-*\` or \`${generalProfile}\` profile.
+
+1. Confirm the exact named custom agent is available in the current ${restart}. A matching file on disk is diagnostic evidence, not proof that this ${restart} loaded it. If it is unavailable, stop, direct the user to ${setup}, and require a new ${restart}. Never substitute a generic agent or a different profile.
+2. ${isolation}
+3. Give the worker a self-contained brief with its role, goal, scope, constraints, relevant file or record pointers, required fan-out, and output contract. Do not copy the original user request or pstack installation/evaluation discussion unless that content is necessary for the delegated role.
+4. If the native delegation surface cannot select the exact named custom agent or preserve the required isolation, report the incompatibility and stop. Do not silently weaken routing or context isolation.
+`;
+}
+
+function addDelegationContractPointer(text, relative, provider) {
+  if (!relative.startsWith("skills/") || !relative.endsWith("/SKILL.md") || !text.includes("pstack-role-")) return text;
+  const pointer = `~/.pstack/providers/${provider}/runtime/DELEGATION.md`;
+  const block = `## Provider delegation contract\n\nBefore the first native role launch, read and obey \`${pointer}\`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.\n\n`;
+  const frontmatterEnd = text.indexOf("\n---\n", 4);
+  if (frontmatterEnd === -1) throw new Error(`${relative}: cannot place delegation contract pointer without frontmatter`);
+  const insertion = frontmatterEnd + 5;
+  return `${text.slice(0, insertion)}\n${block}${text.slice(insertion)}`;
+}
+
 function rewriteSourceDependencies(text) {
   return text
     .replaceAll("the `deslop` skill from the `cursor-team-kit` plugin (`/deslop`)", "an inline code-cleanup pass")
@@ -727,7 +755,10 @@ function transform(relative, buffer, provider) {
   if (relative === "skills/setup-pstack/SKILL.md") return Buffer.from(setupSkill(provider));
   if (relative === "skills/poteto-mode/scripts/worktree-audit.sh") text = rewriteWorktreeAudit(text);
   text = removeReviewBotProtocol(text, relative);
-  if (relative.endsWith(".md")) text = adaptMarkdown(text, relative, provider);
+  if (relative.endsWith(".md")) {
+    text = adaptMarkdown(text, relative, provider);
+    text = addDelegationContractPointer(text, relative, provider);
+  }
   else {
     text = text.replaceAll("@cursor-skill/poteto-mode-tools", "@pstack/poteto-mode-tools");
     if (relative === "skills/poteto-mode/scripts/check-plan.mjs") {
@@ -873,9 +904,12 @@ function generateProvider(provider) {
   records.push({ output: "config/defaults.json", class: "add", reason: "native routing defaults" });
   records.push({ output: `config/defaults/${provider}.json`, class: "add", reason: "runtime compiler routing defaults" });
   records.push({ output: "config/schema.json", class: "add", reason: "sparse override schema" });
+  const contract = path.join("runtime", "DELEGATION.md");
+  writeFile(path.join(dist, contract), delegationContract(provider));
+  records.push({ output: contract, class: "add", reason: "provider-native profile availability, fallback, brief, and context-isolation contract" });
   const potetoInstructions = fs.readFileSync(path.join(dist, "skills", "poteto-mode", "SKILL.md"), "utf8");
   const templateDir = path.join(dist, "runtime", "agents");
-  compileAgents({ provider, output: templateDir, potetoInstructions });
+  compileAgents({ provider, output: templateDir });
   for (const file of listFiles(templateDir)) records.push({ output: path.join("runtime/agents", file), class: "add", reason: "compiled native role profile" });
   if (provider === "codex") writeCodexHelpers(dist, potetoInstructions, records);
   for (const runtimeScript of ["lib.mjs", "compile-agents.mjs"]) {

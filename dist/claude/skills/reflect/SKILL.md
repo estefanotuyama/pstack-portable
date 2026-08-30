@@ -4,6 +4,11 @@ description: Spawn three parallel review subagents over the active transcript, s
 disable-model-invocation: true
 ---
 
+## Provider delegation contract
+
+Before the first native role launch, read and obey `~/.pstack/providers/claude/runtime/DELEGATION.md`. That file is the sole owner of profile availability, fallback, brief, and context-isolation mechanics for this provider.
+
+
 # Reflect
 
 Mine the current conversation for durable learnings, then route them into skill edits.

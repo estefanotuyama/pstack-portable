@@ -39,7 +39,7 @@ After installation, start a new provider session and run the provider-native set
 - Claude Code: `/pstack:setup-pstack`
 - Codex: `$pstack:setup-pstack`
 
-Setup validates the effective model roster, stores sparse personal overrides under `~/.pstack/config/`, and compiles guarded native agent profiles. Plugin scope never commits personal model choices to a project.
+Setup validates the effective model roster, stores sparse personal overrides under `~/.pstack/config/`, and compiles guarded native agent profiles. Plugin scope never commits personal model choices to a project. Until setup has run and a new session has loaded those profiles, every role-using workflow fails closed instead of falling back to a generic agent.
 
 ### Isolated end-to-end simulation
 
